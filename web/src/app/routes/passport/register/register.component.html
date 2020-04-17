@@ -1,0 +1,66 @@
+<nz-tabset class="tabs">
+  <nz-tab [nzTitle]="'register'">
+    <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
+      <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="emailErrorTip">
+          <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
+            <input nz-input formControlName="email" placeholder="Email" />
+          </nz-input-group>
+          <ng-template #emailErrorTip let-i>
+            <ng-container *ngIf="i.errors?.required">Please enter your email address!</ng-container>
+            <ng-container *ngIf="i.errors?.email">Email address format error!</ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="'username'">
+          <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
+            <input nz-input type="username" formControlName="username" placeholder="UserName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="'password'">
+          <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
+            <input nz-input type="password" formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="confirmErrorTip">
+          <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
+            <input nz-input type="password" formControlName="confirm" placeholder="Confirm Password" />
+          </nz-input-group>
+          <ng-template #confirmErrorTip let-i>
+            <ng-container *ngIf="i.errors?.required">Please confirm the password!</ng-container>
+            <ng-container *ngIf="i.errors?.equar">The passwords entered did not match!</ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item>
+                <nz-form-control [nzErrorTip]="phoneErrorTip">
+                    <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
+                        <ng-template #addOnBeforeTemplate>
+                            <nz-select formControlName="phonePrefix" style="width: 100px;">
+                                <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
+                                <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+                            </nz-select>
+                        </ng-template>
+                        <input formControlName="phone" nz-input placeholder="Phone number" />
+                    </nz-input-group>
+                    <ng-template #phoneErrorTip let-i>
+                        <ng-container *ngIf="i.errors?.required">Please enter your phone number!</ng-container>
+                        <ng-container *ngIf="i.errors?.pattern">Wrong mobile phone number format!</ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item> -->
+      <nz-form-item>
+        <button nz-button nzType="primary" nzSize="large" type="submit" [nzLoading]="http.loading" class="submit">
+          register
+        </button>
+        <a class="login" routerLink="/passport/login">Log in with account</a>
+      </nz-form-item>
+    </form>
+  </nz-tab>
+</nz-tabset>

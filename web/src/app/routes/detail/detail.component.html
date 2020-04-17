@@ -1,0 +1,23 @@
+<nz-card [nzTitle]="title" style="min-height: 85vh" [nzExtra]="extraTemplate">
+  <ng-template #extraTemplate>
+    <button nz-button (click)="back()">Back</button>
+  </ng-template>
+
+  <div style="margin-bottom:24px;text-align: right;">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" [(ngModel)]="name" nz-input placeholder="search" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch (click)="search()"><i nz-icon nzType="search"></i></button>
+    </ng-template>
+  </div>
+  <app-item-table [data]="data" (outer)="onChange($event)"></app-item-table>
+
+</nz-card>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Schedule" (nzOnCancel)="handleCancel()" (nzOnOk)="submit(service.value)"
+  [nzOkDisabled]="!service.valid" [nzOkLoading]="loading">
+  <sf #service [schema]="schema" [formData]="formData" button="none">
+  </sf>
+</nz-modal>

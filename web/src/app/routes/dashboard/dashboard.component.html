@@ -1,0 +1,34 @@
+<nz-card nzTitle="Schedule" style="min-height: 85vh" [nzExtra]="extraTemplate">
+    <ng-template #extraTemplate>
+        <button nz-button nzType="primary" (click)="showModal()">add Schedule</button>
+    </ng-template>
+    <div style="width:80%;margin:24px auto;text-align: right;">
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input type="text" [(ngModel)]="name" nz-input placeholder="search" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" nzSearch (click)="search()"><i nz-icon nzType="search"></i></button>
+        </ng-template>
+    </div>
+    <div style="width:80%;margin:24px auto;border: 1px solid #d9d9d9;border-top: none;">
+        <nz-calendar (nzPanelChange)="panelChange($event)" (nzSelectChange)="selectChange($event)">
+            <ul *nzDateCell="let date" class="events">
+                <li *ngFor="let item of data">
+                    <p *ngIf="date.getTime() == item.startTime || date.getTime() == item.endTime || (date.getTime() < item.endTime && date.getTime() > item.startTime)" (click)="linkDetail(date.getTime())">
+                        {{item.title}}</p>
+                </li>
+            </ul>
+            <ng-container *nzMonthCell="let month">
+                <div *ngIf="getMonthData(month) as monthData" class="notes-month">
+                    <section>{{ monthData }}</section>
+                    <span>Backlog number</span>
+                </div>
+            </ng-container>
+        </nz-calendar>
+    </div>
+</nz-card>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Schedule" (nzOnCancel)="handleCancel()" (nzOnOk)="submit(service.value)" [nzOkDisabled]="!service.valid" [nzOkLoading]="loading">
+    <sf #service [schema]="schema" [formData]="formData" button="none">
+    </sf>
+</nz-modal>

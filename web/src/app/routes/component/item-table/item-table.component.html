@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="data">
+  <thead>
+    <tr>
+      <th nzWidth="150px">title</th>
+      <th nzWidth="150px">description</th>
+      <th nzWidth="150px">startTime</th>
+      <th nzWidth="150px">endTime</th>
+      <th nzWidth="150px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of basicTable.data">
+      <td nzWidth="150px">{{item.title}}</td>
+      <td nzWidth="150px">{{item.description}}</td>
+      <td nzWidth="150px">{{item.startTime | date:'yyyy-MM-dd'}}</td>
+      <td nzWidth="150px">{{item.endTime | date:'yyyy-MM-dd'}}</td>
+      <td nzWidth="150px">
+        <a style="color:#1890ff" (click)="show(item.id)">Check</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a style="color:#ff4d4f" (click)="delete(item.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

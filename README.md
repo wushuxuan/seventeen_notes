@@ -4,13 +4,17 @@
 # 页面详情
  ## register
  <img src="https://github.com/wushuxuan/seventeen_notes/blob/master/images/register.png" />
+ 
  ## login 
  <img src="https://github.com/wushuxuan/seventeen_notes/blob/master/images/login.png"/>
+ 
  ## schedule 
  <img src="https://github.com/wushuxuan/seventeen_notes/blob/master/images/schedule.png"/>
+ 
   ## detail 
  <img src="https://github.com/wushuxuan/seventeen_notes/blob/master/images/detail.png"/>
-   ## list
+ 
+  ## list
  <img src="https://github.com/wushuxuan/seventeen_notes/blob/master/images/list.png" />
  
  

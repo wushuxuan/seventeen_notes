@@ -1,0 +1,16 @@
+{
+  "name": "lab-7",
+  "version": "1.0.0",
+  "description": "Simple node server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "5.9.4"
+  }
+}
